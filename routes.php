@@ -1,5 +1,5 @@
 <?php
-  echo 'rootes.phpを通りました。<br>';
+  // echo 'rootes.phpを通りました。<br>';
 
 
   // １、GETパラメータを取得
