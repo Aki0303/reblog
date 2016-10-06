@@ -14,24 +14,35 @@
     case 'add';
         $controller->add();
         break;
+    case 'create':
+        $controller->create($post);
+        break;
+    case 'edit':
+        $controller->edit($id);
+        break;
+    case 'update':
+        $controller->update($id, $post);
+        break;
+    case 'delete':
+        $controller->delete($id);
     default:
         break;
   }
+
   class BlogsController {
     function index() {
       // ⑦モデルを呼び出す
-      $blog = new Blog();
+      $blog        = new Blog();
       $viewOptions = $blog->index();
-      $action = 'index';
+      $action      = 'index';
 
       require('views/layout/application.php');
     }
 
     function show($id) {
-
-      $blog = new Blog();
+      $blog        = new Blog();
       $viewOptions = $blog->show($id);
-      $action = 'show';
+      $action      = 'show';
 
       require('views/layout/application.php');
     }
@@ -40,6 +51,42 @@
       $action = 'add';
 
       require('views/layout/application.php');
+    }
+
+    function create($post) {
+      $blog = new Blog();
+      $blog->create($post);
+
+      // indexへ遷移
+      header('Location: /seed_blog/blogs/index');
+      exit();
+    }
+
+    function edit($id) {
+      $blog        = new Blog();
+      $viewOptions = $blog->edit($id);
+      $action      = 'edit';
+
+      require('views/layout/application.php');
+    }
+
+    function update($post, $id) {
+      $blog = new Blog();
+      $blog->update($id, $post);
+
+      // indexへ遷移
+      header('Location: /seed_blog/blogs/index');
+      exit();
+    }
+
+    function delete($id) {
+      $blog        = new Blog();
+      $viewOptions = $blog->delete($id);
+      $action      = 'delete';
+
+      // indexへ遷移
+      header('Location: /seed_blog/blogs/index');
+      exit();
     }
   }
 ?>

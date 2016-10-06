@@ -1,6 +1,4 @@
 <?php
-  // echo 'rootes.phpを通りました。<br>';
-
 
   // １、GETパラメータを取得
   // explode関数：第二引数の文字列を、第一引数の文字列で分解し、配列で返す関数。
@@ -14,6 +12,13 @@
   if (isset($params[2])) {
     $id = $params[2];
   }
+
+  // POSTでデータが送られた場合
+  $post =  array();
+  if (!empty($_POST)) {
+    $post = $_POST;
+  }
+
 
   // ３、コントローラの呼び出し
   require('controllers/'. $resouce .'_controller.php');
