@@ -1,5 +1,7 @@
 <?php
+
   require('models/blog.php');
+
   // コントローラのクラスをインスタンス化
   $controller = new BlogsController();
 
@@ -11,7 +13,7 @@
     case 'show':
         $controller->show($id);
         break;
-    case 'add';
+    case 'add':
         $controller->add();
         break;
     case 'create':

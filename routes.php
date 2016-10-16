@@ -1,28 +1,22 @@
 <?php
-
-  // １、GETパラメータを取得
+  // １．GETパラメータを取得
   // explode関数：第二引数の文字列を、第一引数の文字列で分解し、配列で返す関数。
-  $params = explode("/", $_GET['url']);
+  $params = explode('/', $_GET['url']);
 
-  // ２，パラメータの分解
+  // ２．パラメータの分解
   $resouce = $params[0];
-  $action  = $params[1];
-    // $idはオプションを取得するものであるが、オプションは存在するかわからないため、$id = 0;
+  $action = $params[1];
   $id = 0;
   if (isset($params[2])) {
     $id = $params[2];
   }
 
   // POSTでデータが送られた場合
-  $post =  array();
+  $post = array();
   if (!empty($_POST)) {
     $post = $_POST;
   }
 
-
-  // ３、コントローラの呼び出し
+  // ３．コントローラの呼び出し
   require('controllers/'. $resouce .'_controller.php');
-
-
-
 ?>
